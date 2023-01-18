@@ -1,0 +1,24 @@
+-- 22년 3월 오프라인/온라인 상품 판매 데이터
+-- 판매 날짜, 상품ID, 유저ID, 판매량 출력
+-- 오프라인 데이터의 USER_ID는 NULL 값으로 표시
+-- 판매일 기준 오름차순
+-- 상품 ID 기준 오름차순
+-- 유저 ID 기준 오름차순
+
+SELECT DATE_FORMAT(l.SALES_DATE, '%Y-%m-%d') AS SALES_DATE
+     , l.PRODUCT_ID
+     , l.USER_ID
+     , l.SALES_AMOUNT
+FROM ONLINE_SALE AS l
+WHERE YEAR(SALES_DATE) = 2022 AND MONTH(SALES_DATE) = 03
+
+UNION ALL
+
+SELECT DATE_FORMAT(f.SALES_DATE, '%Y-%m-%d') AS SALES_DATE
+     , f.PRODUCT_ID
+     , NULL AS USER_ID
+     , f.SALES_AMOUNT
+FROM OFFLINE_SALE AS f
+WHERE YEAR(SALES_DATE) = 2022 AND MONTH(SALES_DATE) = 03
+
+ORDER BY SALES_DATE, PRODUCT_ID, USER_ID
