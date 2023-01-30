@@ -1,0 +1,3 @@
+-- 가장 높은 판매가 출력
+SELECT MAX(PRICE) AS MAC_PRICE
+FROM PRODUCT
